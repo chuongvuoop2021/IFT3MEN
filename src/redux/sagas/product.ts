@@ -1,14 +1,10 @@
-import { takeLatest } from 'redux-saga/effects'
+import { takeLatest, select } from 'redux-saga/effects'
 
-import {
-  ADD_PRODUCT,
-  AddProductAction,
-} from '../../types'
+import { AddCountryAction } from '../../types'
 
-function* doSomethingWhenAddingProduct(action: AddProductAction) {
-  yield console.log(action)
+function* doSomethingWhenAddingProduct(action: AddCountryAction) {
+  const state = yield select()
+  yield localStorage.setItem('state', JSON.stringify(state.product.inCart))
 }
 
-export default [
-  takeLatest(ADD_PRODUCT, doSomethingWhenAddingProduct),
-]
+export default [takeLatest('*', doSomethingWhenAddingProduct)]

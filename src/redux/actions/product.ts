@@ -3,11 +3,13 @@ import { Dispatch } from 'redux'
 import {
   ADD_PRODUCT,
   REMOVE_PRODUCT,
-  ProductActions,
-  Product,
+  ADD_QUANTITY,
+  FETCH_COUNTRY,
+  CountryActions,
+  CountryProps,
 } from '../../types'
 
-export function addProduct(product: Product): ProductActions {
+export function addCountry(product: CountryProps): CountryActions {
   return {
     type: ADD_PRODUCT,
     payload: {
@@ -16,7 +18,16 @@ export function addProduct(product: Product): ProductActions {
   }
 }
 
-export function removeProduct(product: Product): ProductActions {
+export function addQuantity(product: CountryProps): CountryActions {
+  return {
+    type: ADD_QUANTITY,
+    payload: {
+      product,
+    },
+  }
+}
+
+export function removeProduct(product: CountryProps): CountryActions {
   return {
     type: REMOVE_PRODUCT,
     payload: {
@@ -26,12 +37,21 @@ export function removeProduct(product: Product): ProductActions {
 }
 
 // Async action processed by redux-thunk middleware
-export function fetchProduct(productId: string) {
+export function fetchCountry(countryName: string) {
   return (dispatch: Dispatch) => {
-    return fetch(`products/${productId}`)
+    return fetch(`https://restcountries.eu/rest/v2/name/${countryName}`)
       .then(resp => resp.json())
       .then(product => {
-        dispatch(addProduct(product))
+        dispatch(dataFetchStart(product[0]))
       })
+  }
+}
+
+export function dataFetchStart(product: CountryProps): CountryActions {
+  return {
+    type: FETCH_COUNTRY,
+    payload: {
+      product,
+    },
   }
 }

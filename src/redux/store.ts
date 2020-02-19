@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import thunk from 'redux-thunk'
+import _isEmpty from 'lodash/isEmpty'
 
 import { AppState } from '../types'
 import createRootReducer from './reducers'
@@ -9,6 +10,7 @@ import rootSaga from './sagas'
 const initState: AppState = {
   product: {
     inCart: [],
+    selectedCountry: null,
   },
   ui: {
     dialogOpen: {},
@@ -19,6 +21,12 @@ export default function makeStore(initialState = initState) {
   const sagaMiddleware = createSagaMiddleware()
   const middlewares = [sagaMiddleware, thunk]
   let composeEnhancers = compose
+  const localStorageData = localStorage.getItem('state') || ''
+
+  if (!_isEmpty(localStorageData)) {
+    const localStorageCountryAdded = JSON.parse(localStorageData)
+    initialState.product.inCart = localStorageCountryAdded
+  }
 
   if (process.env.NODE_ENV === 'development') {
     if ((window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
