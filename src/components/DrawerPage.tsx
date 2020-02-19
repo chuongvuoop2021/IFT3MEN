@@ -8,7 +8,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { removeProduct } from '../redux/actions'
+import { removeCountry } from '../redux/actions'
 import { AppState } from '../types'
 import Flag from './Flag'
 
@@ -81,7 +81,9 @@ const DrawerPage = ({ isOpen, onDrawerCloseClick }: DrawerProps) => {
   const classes = useStyles()
 
   const dispatch = useDispatch()
-  const products = useSelector((state: AppState) => state.product.inCart)
+  const countries = useSelector(
+    (state: AppState) => state.selectedCountry.inCart
+  )
 
   return (
     <Drawer
@@ -99,13 +101,13 @@ const DrawerPage = ({ isOpen, onDrawerCloseClick }: DrawerProps) => {
         </IconButton>
       </div>
       <Divider />
-      {products.length <= 0 && <div>No products in cart</div>}
+      {countries.length <= 0 && <div>No countries in cart</div>}
       <ul>
-        {products.map(p => (
+        {countries.map(p => (
           <div className="country-item" key={p.name}>
             <Flag url={p.flag}></Flag>
             {p.name}
-            <button onClick={() => dispatch(removeProduct(p))}>Remove</button>
+            <button onClick={() => dispatch(removeCountry(p))}>Remove</button>
           </div>
         ))}
       </ul>

@@ -1,37 +1,37 @@
 import { Dispatch } from 'redux'
 
 import {
-  ADD_PRODUCT,
-  REMOVE_PRODUCT,
+  ADD_COUNTRY,
+  REMOVE_COUNTRY,
   ADD_QUANTITY,
   FETCH_COUNTRY,
   CountryActions,
   CountryProps,
 } from '../../types'
 
-export function addCountry(product: CountryProps): CountryActions {
+export function addCountry(selectedCountry: CountryProps): CountryActions {
   return {
-    type: ADD_PRODUCT,
+    type: ADD_COUNTRY,
     payload: {
-      product,
+      selectedCountry,
     },
   }
 }
 
-export function addQuantity(product: CountryProps): CountryActions {
+export function addQuantity(selectedCountry: CountryProps): CountryActions {
   return {
     type: ADD_QUANTITY,
     payload: {
-      product,
+      selectedCountry,
     },
   }
 }
 
-export function removeProduct(product: CountryProps): CountryActions {
+export function removeCountry(selectedCountry: CountryProps): CountryActions {
   return {
-    type: REMOVE_PRODUCT,
+    type: REMOVE_COUNTRY,
     payload: {
-      product,
+      selectedCountry,
     },
   }
 }
@@ -41,17 +41,17 @@ export function fetchCountry(countryName: string) {
   return (dispatch: Dispatch) => {
     return fetch(`https://restcountries.eu/rest/v2/name/${countryName}`)
       .then(resp => resp.json())
-      .then(product => {
-        dispatch(dataFetchStart(product[0]))
+      .then(selectedCountry => {
+        dispatch(dataFetchStart(selectedCountry[0]))
       })
   }
 }
 
-export function dataFetchStart(product: CountryProps): CountryActions {
+export function dataFetchStart(selectedCountry: CountryProps): CountryActions {
   return {
     type: FETCH_COUNTRY,
     payload: {
-      product,
+      selectedCountry,
     },
   }
 }

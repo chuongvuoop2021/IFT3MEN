@@ -7,11 +7,13 @@ import { AppState } from '../../types'
 import './CartIcon.scss'
 
 const CartIcon = () => {
-  const products = useSelector((state: AppState) => state.product.inCart)
+  const countries = useSelector(
+    (state: AppState) => state.selectedCountry.inCart
+  )
   return (
     <div className="cart-icon">
       <ShoppingIcon className="shopping-icon" />
-      <span className="item-count">{products.length}</span>
+      <span className="item-count">{countries.length}</span>
     </div>
   )
 }

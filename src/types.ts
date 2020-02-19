@@ -1,6 +1,6 @@
 // Action types
-export const ADD_PRODUCT = 'ADD_PRODUCT'
-export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
+export const ADD_COUNTRY = 'ADD_COUNTRY'
+export const REMOVE_COUNTRY = 'REMOVE_COUNTRY'
 export const ADD_QUANTITY = 'ADD_QUANTITY'
 export const TOGGLE_DIALOG = 'TOGGLE_DIALOG'
 export const FETCH_COUNTRY = 'FETCH_COUNTRY'
@@ -28,30 +28,30 @@ export interface CountryProps {
 }
 
 export type AddCountryAction = {
-  type: typeof ADD_PRODUCT
+  type: typeof ADD_COUNTRY
   payload: {
-    product: CountryProps
+    selectedCountry: CountryProps
   }
 }
 
 export type AddQuantityAction = {
   type: typeof ADD_QUANTITY
   payload: {
-    product: CountryProps
+    selectedCountry: CountryProps
   }
 }
 
-export type RemoveProductAction = {
-  type: typeof REMOVE_PRODUCT
+export type RemoveCountryAction = {
+  type: typeof REMOVE_COUNTRY
   payload: {
-    product: CountryProps
+    selectedCountry: CountryProps
   }
 }
 
 export type FetCountryAction = {
   type: typeof FETCH_COUNTRY
   payload: {
-    product: CountryProps
+    selectedCountry: CountryProps
   }
 }
 
@@ -67,11 +67,11 @@ export type UiActions = ToggleDialogAction
 // Use this union in reducer
 export type CountryActions =
   | AddCountryAction
-  | RemoveProductAction
+  | RemoveCountryAction
   | AddQuantityAction
   | FetCountryAction
 
-export type ProductState = {
+export type CountryState = {
   inCart: CountryProps[]
   selectedCountry: CountryProps | null
 }
@@ -84,6 +84,6 @@ export type UiState = {
 }
 
 export type AppState = {
-  product: ProductState
+  selectedCountry: CountryState
   ui: UiState
 }

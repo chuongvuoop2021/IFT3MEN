@@ -80,14 +80,17 @@ const NavBar = ({ setSearch, handleDrawerOpen, open }: NavBarProps) => {
   const { theme } = useContext(ThemeContext)
   const classes = useStyles()
 
-  const search = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value)
-  }, [setSearch])
+  const search = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearch(e.target.value)
+    },
+    [setSearch]
+  )
 
   return (
     <div className={classes.root}>
       <AppBar
-        position="fixed"
+        position="static"
         style={{ backgroundColor: theme.background, color: theme.color }}
       >
         <Toolbar>
