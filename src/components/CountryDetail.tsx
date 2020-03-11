@@ -9,7 +9,7 @@ const flagStyle = {
 
 const CountryDetail = () => {
   const countryArr = useSelector(
-    (state: AppState) => state.selectedCountry.selectedCountry
+    (state: AppState) => state.storedCountries.selectedCountry
   )
   console.log(countryArr)
   return (

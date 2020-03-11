@@ -82,7 +82,7 @@ const DrawerPage = ({ isOpen, onDrawerCloseClick }: DrawerProps) => {
 
   const dispatch = useDispatch()
   const countries = useSelector(
-    (state: AppState) => state.selectedCountry.inCart
+    (state: AppState) => state.storedCountries.inCart
   )
 
   return (

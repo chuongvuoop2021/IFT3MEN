@@ -14,7 +14,7 @@ type CountryRowProps = {
 const CountryRow = ({ country }: CountryRowProps) => {
   let history = useHistory()
   const addedCountry = useSelector(
-    (state: AppState) => state.selectedCountry.inCart
+    (state: AppState) => state.storedCountries.inCart
   )
   const dispatch = useDispatch()
   const handleAddButtonClick = () => {

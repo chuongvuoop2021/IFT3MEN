@@ -8,9 +8,12 @@ import createRootReducer from './reducers'
 import rootSaga from './sagas'
 
 const initState: AppState = {
-  selectedCountry: {
+  storedCountries: {
     inCart: [],
     selectedCountry: null,
+  },
+  user: {
+    currentUser: {},
   },
   ui: {
     dialogOpen: {},
@@ -25,7 +28,7 @@ export default function makeStore(initialState = initState) {
 
   if (!_isEmpty(localStorageData)) {
     const localStorageCountryAdded = JSON.parse(localStorageData)
-    initialState.selectedCountry.inCart = localStorageCountryAdded
+    initialState.storedCountries.inCart = localStorageCountryAdded
   }
 
   if (process.env.NODE_ENV === 'development') {

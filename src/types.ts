@@ -4,11 +4,25 @@ export const REMOVE_COUNTRY = 'REMOVE_COUNTRY'
 export const ADD_QUANTITY = 'ADD_QUANTITY'
 export const TOGGLE_DIALOG = 'TOGGLE_DIALOG'
 export const FETCH_COUNTRY = 'FETCH_COUNTRY'
+export const LOGIN_USER = 'LOGIN_USER'
 
 // Enum
 export enum DialogType {
   SignIn = 'signIn',
   SignUp = 'signUp',
+}
+export type CurrentUser = {
+  id?: string
+  name?: string
+  userName?: string
+  email?: string
+}
+
+export type LoginUserAction = {
+  type: typeof LOGIN_USER
+  payload: {
+    currentUser: CurrentUser
+  }
 }
 
 // A Country
@@ -64,6 +78,8 @@ export type ToggleDialogAction = {
 
 export type UiActions = ToggleDialogAction
 
+export type UserActions = LoginUserAction
+
 // Use this union in reducer
 export type CountryActions =
   | AddCountryAction
@@ -83,7 +99,12 @@ export type UiState = {
   }
 }
 
+export type UserState = {
+  currentUser: CurrentUser
+}
+
 export type AppState = {
-  selectedCountry: CountryState
+  storedCountries: CountryState
   ui: UiState
+  user: UserState
 }

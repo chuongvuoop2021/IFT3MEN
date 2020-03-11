@@ -6,7 +6,7 @@ function* doSomethingWhenAddAndRemoveItem(action: AddCountryAction) {
   const state = yield select()
   yield localStorage.setItem(
     'state',
-    JSON.stringify(state.selectedCountry.inCart)
+    JSON.stringify(state.storedCountries.inCart)
   )
 }
 

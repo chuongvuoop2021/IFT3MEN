@@ -8,7 +8,7 @@ import './CartIcon.scss'
 
 const CartIcon = () => {
   const countries = useSelector(
-    (state: AppState) => state.selectedCountry.inCart
+    (state: AppState) => state.storedCountries.inCart
   )
   return (
     <div className="cart-icon">
