@@ -36,10 +36,17 @@ function Directory() {
       linkUrl: 'shop/hardwares',
     },
     {
-      title: 'others',
+      title: 'devices',
       imageUrl:
         'https://mustohave.com/wp-content/uploads/2019/11/10-best-PC-Gaming-Accessories-to-Buy-1.png',
       id: 5,
+      linkUrl: 'shop/devices',
+    },
+    {
+      title: 'gadgets & others',
+      imageUrl:
+        'https://images.unsplash.com/photo-1477233534935-f5e6fe7c1159?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+      id: 6,
       linkUrl: 'shop/others',
     },
   ]

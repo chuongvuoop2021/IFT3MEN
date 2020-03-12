@@ -3,10 +3,22 @@
 }
 
 body {
+  background-color: #282c34;
   font-family: 'Open Sans Condensed';
   padding:  20px 60px;
   -moz-user-select:none;
   -webkit-user-select:none;
+}
+
+a {
+  text-decoration: none;
+  color: black
+}
+
+a:active, a:focus {
+  outline: 0;
+  border: none;
+  -moz-outline-style: none;
 }
 
 .App-logo {
