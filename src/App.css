@@ -2,6 +2,13 @@
   text-align: center;
 }
 
+body {
+  font-family: 'Open Sans Condensed';
+  padding:  20px 60px;
+  -moz-user-select:none;
+  -webkit-user-select:none;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

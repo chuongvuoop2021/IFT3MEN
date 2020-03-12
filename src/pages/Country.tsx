@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react'
 
 import useFetchCountries from '../hooks/useFetchCountries'
-import useFetchItems from '../hooks/useFetchItems'
 import CountriesTable from '../components/CountriesTable'
 import NavBar from '../components/NavBar'
 import DrawerPage from '../components/DrawerPage'
@@ -24,8 +23,6 @@ function Country() {
     isSortedValue,
     selectedSortField
   )
-  const allItems = useFetchItems()
-  console.log(allItems)
   const handleDrawerOpen = () => {
     setOpen(true)
   }

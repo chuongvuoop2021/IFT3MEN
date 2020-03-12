@@ -9,19 +9,19 @@ interface ItemProps {
   categories?: [string]
 }
 
-const useFetchItems = () => {
+const useFetchItems = (filter: string) => {
   const [allItems, setAllItems] = useState<ItemProps[]>([])
 
   useEffect(() => {
     axios
-      .get('http://localhost:2000/api/v1/items')
+      .get(`http://localhost:2000/api/v1/items/${filter}`)
       .then(response => {
         setAllItems(response.data)
       })
       .catch(error => {
         console.log(error)
       })
-  }, [])
+  }, [filter])
 
   return allItems
 }
